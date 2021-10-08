@@ -1,0 +1,13 @@
+body{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.hello-world{
+    font-size: 4rem;
+}
+.sub-desc{
+    min-width: 340px;
+}
