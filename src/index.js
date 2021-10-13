@@ -4,17 +4,22 @@ import gsap from 'gsap';
 
 let canUseAnimation = window.innerWidth > 1200;
 
-const imageDisplayContainer = document.querySelector('.img-display');
-const imageDisplays = document.querySelectorAll('.img-display > *');
+const imageDisplayContainer = document.querySelector('.img-display__container');
+const imageDisplays = document.querySelectorAll('.img-display__container > *');
 let indexOfCurrentImageDisplay = null; //store index of current image display
 
 const textContainersBottomStore = [];
 /*move text containers downwards so that only their titles are visible and, whilst doing this, store their correct positioning so that they 
 can be used in further animations later on.*/
 function moveTextContainers(){
-    if(!canUseAnimation) return;
     imageDisplays.forEach(imageDisplay => {
         const textContainer = imageDisplay.querySelector('.img-display__text-container'); const textHeader = imageDisplay.querySelector('.img-display__text-header');
+        /*if the viewports width is too small for us to interact with our image feature, our textContainers may now be positioned incorrectly from a 
+        previous invoking of this method, and so, we need to reset all of their positions back to their default value: 0.*/
+        if(!canUseAnimation){
+            textContainer.style.bottom = '0';
+            return;
+        }
         const height = textContainer.clientHeight - textHeader.clientHeight - 35;
         textContainer.style.bottom = -height+'px';
         textContainersBottomStore.push(-height);
