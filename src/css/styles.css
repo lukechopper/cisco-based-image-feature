@@ -133,7 +133,7 @@ body{
     visibility: hidden;
 }
 .img-display__text-btn:hover{
-    background-color: #33C9EF;
+    background-color: #39d7ff;
     cursor: pointer;
 }
 .img-display__text-btn--light{
